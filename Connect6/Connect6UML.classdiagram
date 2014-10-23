@@ -18,7 +18,7 @@ isHuman возвращает false.</body>
     </comment>
     <comment Id="a5aa87e7-1e08-4d8e-9939-6f6c73af7967">
       <elementDefinition Id="34136bee-4097-4ba7-8b47-54d156e864e4" />
-      <body>слушатель готовности дать ответ. В абстрактном классе реализуется 2а массива слушателей 1й-те, кто слушает начало Think, 2й- слушает окончание Think. </body>
+      <body>слушатель готовности игрока дать ответ. В абстрактном классе реализуется 2а массива слушателей 1й-те, кто слушает начало Think, 2й- слушает окончание Think. </body>
       <annotatedElements>
         <interfaceMoniker Id="7ca3610b-cb1a-4625-9480-c99f6bdf736a" LastKnownName="IPlayerListener" />
       </annotatedElements>
@@ -56,7 +56,9 @@ isHuman возвращает false.</body>
     </comment>
     <comment Id="3dff9bdc-d747-423d-95d2-413be4e498c7">
       <elementDefinition Id="4ca5bd62-1f4c-43d1-a403-79a322f53613" />
-      <body>Класс, определяющий формат передаваемых данных.
+      <body>Необходимо подключить библиотеку json-simple-1.1.1.jar
+
+Класс, определяющий формат передаваемых данных.
 
 
 ( Сервер возвращает "чистые" данные в виде json строки, а класс Data принимает эту строку и преобразует в объект.
@@ -74,20 +76,6 @@ isHuman возвращает false.</body>
       </annotatedElements>
     </comment>
   </ownedCommentsInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="6fd39e9d-878f-4719-9a73-7cb7fc616844">
-      <profileInstance Id="3e7a0204-832d-47da-9dd5-8f29c8aca609" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="9e21c1b4-5442-4cc6-b453-0b38b3b6e48c">
-      <profileInstance Id="65ac3c25-6fcf-4456-8498-30097f2e92bb" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <Interface Id="4b90bb54-d5a0-472a-a845-52257a5de243" name="IPlayer" isAbstract="false" isLeaf="false">
@@ -919,5 +907,19 @@ isHuman возвращает false.</body>
   </packagedElements>
   <package Id="7d7a446c-c4c2-456e-8d1e-d12356f41065" name="Connect6">
     <elementDefinition Id="b5cf3f2c-eca2-4f02-975f-4569c346c88d" />
+    <profileInstances>
+      <packageHasProfileInstances Id="6fd39e9d-878f-4719-9a73-7cb7fc616844">
+        <profileInstance Id="3e7a0204-832d-47da-9dd5-8f29c8aca609" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="9e21c1b4-5442-4cc6-b453-0b38b3b6e48c">
+        <profileInstance Id="65ac3c25-6fcf-4456-8498-30097f2e92bb" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
