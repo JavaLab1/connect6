@@ -6,6 +6,8 @@
 
 package connect6;
 
+import Data.Data;
+
 /**
  *
  * @author ИльяРыжов
@@ -17,6 +19,8 @@ public class GameForm extends javax.swing.JFrame {
      */
     public GameForm() {
         initComponents();
+        Connector.Connector connector=Connector.Connector.getConnector();
+        connector.SendData(new Data());
     }
 
     /**
@@ -28,27 +32,28 @@ public class GameForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        start = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        start.setText("Start");
+        start.setName(""); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jButton1)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(start)
+                .addContainerGap(600, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jButton1)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(start)
+                .addContainerGap(417, Short.MAX_VALUE))
         );
 
         pack();
@@ -85,11 +90,12 @@ public class GameForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GameForm().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
 }
