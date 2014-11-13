@@ -28,7 +28,7 @@ public class Connector implements IConnector{
         try {
             data=new ArrayList<>();
             dataListeners=new ArrayList<>();
-            socket=new Socket("127.0.0.1", 1254);
+            socket=new Socket("127.0.0.1", (1254));
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
             Thread outTh=new Thread(new OutThread(), "out");
@@ -48,9 +48,16 @@ public class Connector implements IConnector{
     
     protected void onNewData(Data data)
     {
-        for (IDataListener listener : dataListeners) {
-            listener.onData(data);
+        int n=dataListeners.size();
+        
+        for(int i=0;i<n;i++)
+        {
+            
+            IDataListener listener=dataListeners.get(i);
+            if(listener!=null)
+                listener.onData(data);
         }
+       
     }
     
      
@@ -58,6 +65,11 @@ public class Connector implements IConnector{
     @Override
     public void addNewDataListener(IDataListener listener) {
         dataListeners.add(listener);
+    }
+    
+    @Override
+    public void removeNewDataListener(IDataListener listener) {
+        dataListeners.remove(listener);
     }
 
     @Override
@@ -86,7 +98,7 @@ public class Connector implements IConnector{
                 if(data!=null)
                 {
                     try {
-                        if(!data.isEmpty())
+                        if((!data.isEmpty())&&(data.size()>0)&&(data.get(0)!=null)&&(out!=null))
                         {
                             out.writeUTF(data.get(0).toString());
                             out.flush();
@@ -118,9 +130,9 @@ public class Connector implements IConnector{
                 if(data!=null)
                 {
                     try {
-                        
-                       String sOut= in.readUTF();
-                       Data sData=new Data(sOut);
+                       
+                       String sIn= in.readUTF();
+                       Data sData=new Data(sIn);
                        onNewData(sData);
                     } catch (IOException | ParseException ex) {
                         Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);

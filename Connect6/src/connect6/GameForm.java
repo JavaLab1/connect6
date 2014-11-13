@@ -6,7 +6,9 @@
 
 package connect6;
 
+import Connector.IDataListener;
 import Data.Data;
+import connect6.view.Place;
 
 /**
  *
@@ -19,8 +21,12 @@ public class GameForm extends javax.swing.JFrame {
      */
     public GameForm() {
         initComponents();
-        Connector.Connector connector=Connector.Connector.getConnector();
-        connector.SendData(new Data());
+        
+        
+        /*connector.SendData(new Data());
+        connector.SendData(new Data());*/
+        
+       
     }
 
     /**
@@ -36,28 +42,51 @@ public class GameForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        start.setText("Start");
+        start.setText("Присоединиться к игре");
         start.setName(""); // NOI18N
+        start.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                startMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(510, Short.MAX_VALUE)
                 .addComponent(start)
-                .addContainerGap(600, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
                 .addComponent(start)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(437, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startMouseClicked
+        Connector.Connector connector=Connector.Connector.getConnector(); 
+        connector.SendData(new Data());
+        connector.addNewDataListener(new IDataListener() {
+
+            @Override
+            public void onData(Data data) {
+                String toString = data.toString();
+                connector.removeNewDataListener(this);
+            }
+        });
+        
+        setContentPane(new Place());
+       // this.getContentPane().add();
+        
+       
+    }//GEN-LAST:event_startMouseClicked
 
     /**
      * @param args the command line arguments

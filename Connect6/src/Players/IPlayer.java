@@ -12,15 +12,18 @@ package Players;
  */
 public interface IPlayer {
     
-   void addEndThinkListener(IPlayerListener listener);
-   void addStartThinkListener(IPlayerListener listener);
+   void addThinkListener(IPlayerListener listener);
+   void removeThinkListener(IPlayerListener listener);
    int getColor();
    int getId();
    int getScore();
    Boolean isHuman();
    void setColor(int color);
    void setId(int id);
-   void setTurn();
+   void setTurn(Boolean turn);
    void giveScore();
+   int getX();
+   int getY();
+   void setPozition(int x,int y);
     
 }

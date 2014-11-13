@@ -12,5 +12,6 @@ import Data.Data;
  */
 public interface IConnector {
     void addNewDataListener(IDataListener listener);
+    void removeNewDataListener(IDataListener listener);
     void SendData(Data data);
 }

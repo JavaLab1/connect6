@@ -13,73 +13,104 @@ import java.util.ArrayList;
  *
  * @author Ирина Рыжова
  */
-public abstract class APlayer implements IPlayer, IPlayerListener{
+public abstract class APlayer implements IPlayer{
 
-    protected ArrayList<IPlayerListener> endThinkListeners;
-    protected ArrayList<IPlayerListener> startThinkListeners;
+    protected ArrayList<IPlayerListener> thinkListeners;
+    protected IConnector connector;
+    protected int _id=-1;
+    protected int _color=-1;
+    protected int score=0;
+    protected int x;
+    protected int y;
     protected APlayer(IConnector connector)
     {
-        endThinkListeners=new ArrayList<IPlayerListener>();
-        startThinkListeners=new ArrayList<IPlayerListener>();
+        thinkListeners=new ArrayList<>();
+        this.connector=connector;
+        
     }
-    @Override
-    public void addEndThinkListener(IPlayerListener listener) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
+    public abstract void Connect();
+    
+    
+    public void onEndThink() {
+        int n=this.thinkListeners.size();
+        for(int i=0;i<n;i++)
+        {
+            thinkListeners.get(i).onEndThinkListener(this);
+        }
     }
 
+
+    public void onStartThink() {
+        int n=this.thinkListeners.size();
+        for(int i=0;i<n;i++)
+        {
+            thinkListeners.get(i).onStartThinkListener(this);
+        }
+    }
+    
     @Override
-    public void addStartThinkListener(IPlayerListener listener) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removeThinkListener(IPlayerListener listener) {
+        thinkListeners.remove(listener);
+    }
+    
+    
+    @Override
+    public void addThinkListener(IPlayerListener listener) {
+        thinkListeners.add(listener);
     }
 
     @Override
     public int getColor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this._color;
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this._id;
     }
-
-    @Override
-    public int getScore() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Boolean isHuman() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
+    
     @Override
     public void setColor(int color) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this._color=color;
     }
 
     @Override
     public void setId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this._id=id;
     }
 
     @Override
-    public void setTurn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getScore() {
+        return score;
     }
-
+    
+    
     @Override
     public void giveScore() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        score=1;
+    }
+    
+    
+    
+    @Override
+    public int getX() {
+        return x;
     }
 
     @Override
-    public void onEndThinkListener(IPlayer player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getY() {
+        return y;
     }
+    
+     @Override
+     public void setPozition(int x,int y)
+     {
+         this.x=x;
+         this.y=y;
+     }
 
-    @Override
-    public void onStartThinkListener(IPlayer player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

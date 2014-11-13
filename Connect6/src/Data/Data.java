@@ -21,6 +21,7 @@ public class Data {
     private static String ID_OPERATION="idOperation";
     private static String X_CELL="xCell";
     private static String Y_CELL="yCell";
+     private static String COLOR="color";
     private JSONObject data;
     
     public Data()
@@ -28,7 +29,7 @@ public class Data {
         Init();
     }
     
-    public Data(int idPlayer,int idComand,int idOperation,int xCell,int yCell)
+    public Data(int idPlayer,int color,int idComand,int idOperation,int xCell,int yCell)
     {
         Init();
         data.put(ID_PLAYER, idPlayer);
@@ -36,6 +37,7 @@ public class Data {
         data.put(ID_COMAND, idOperation);
         data.put(X_CELL, xCell);
         data.put(Y_CELL, yCell);
+        data.put(COLOR, color);
     }
     
     
@@ -62,6 +64,7 @@ public class Data {
         data.put(ID_COMAND, -1);
         data.put(X_CELL, -1);
         data.put(Y_CELL, -1);
+        data.put(COLOR, -1);
     }
     
     public void setIdPlayer(int id)
@@ -69,6 +72,11 @@ public class Data {
         data.put(ID_PLAYER, id);
     }
     
+    
+     public void setColor(int rgb)
+    {
+        this.data.put(COLOR, rgb);
+    }
     
     public void setIdComand(int id)
     {
@@ -96,6 +104,12 @@ public class Data {
     public int getIdPlayer()
     {
         return (int)data.get(ID_PLAYER);
+    }
+    
+    
+    public int getColor()
+    {
+        return (int)data.get(COLOR);
     }
     
     
